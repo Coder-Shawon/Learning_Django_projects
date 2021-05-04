@@ -42,11 +42,13 @@ INSTALLED_APPS = [
 
     # My apps
     'myapp',
-    'Myalbum'
+    'Myalbum',
+    'storages'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,9 +130,17 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = [BASE_DIR / 'staticfiles']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
+
+AWS_ACCESS_KEY_ID = 'AKIARVGPJVYVGB6OFLTK'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'nasim.secpstorage'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 # Default primary key field type

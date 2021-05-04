@@ -22,10 +22,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('myapp.urls', namespace='myapp'))
+    path('', include('myapp.urls', namespace='myapp')),
+    path('myalbum/', include('Myalbum.urls', namespace='Myalbum'))
+
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+                        document_root=settings.MEDIA_ROOT)
